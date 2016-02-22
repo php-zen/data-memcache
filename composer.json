@@ -1,0 +1,37 @@
+{
+    "name": "zen/data-memcache",
+    "description": "Zen 框架 Memcache 扩展包。",
+    "type": "library",
+    "keywords": [
+        "zen",
+        "memcache"
+    ],
+    "license": "LGPL-3.0+",
+    "authors": [
+        {
+            "name": "Snakevil Zen",
+            "email": "zsnakevil@gmail.com",
+            "role": "Leader"
+        }
+    ],
+    "require": {
+        "ext-memcached": "*",
+        "zen/core": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zen\\Data\\Memcache\\": "lib/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ZenTest\\Data\\Memcache\\": "share/test/"
+        }
+    },
+    "archive": {
+        "exclude": [
+            "/share",
+            ".gitignore"
+        ]
+    }
+}
