@@ -11,6 +11,8 @@ namespace Zen\Data\Memcache;
 
 use Zen\Core;
 
+use Memcached as PHPPHPMemcached;
+
 /**
  * Memcache 组件。
  *
@@ -30,7 +32,7 @@ class Memcache extends Core\Component
      */
     final public static function connect($id, $servers = array())
     {
-        $o_mc = new Memcached($id);
+        $o_mc = new PHPMemcached($id);
         $a_servers = $o_mc->getServerList();
         if (empty($a_servers)) {
             if (empty($servers)) {
@@ -38,15 +40,13 @@ class Memcache extends Core\Component
             }
             $o_mc->addServers($servers);
             $o_mc->setOptions(array(
-                    Memcached::OPT_PREFIX_KEY => $id,
-                    Memcached::OPT_DISTRIBUTION => Memcached::DISTRIBUTION_CONSISTENT,
-                    Memcached::OPT_LIBKETAMA_COMPATIBLE => true,
-                    Memcached::OPT_NO_BLOCK => true,
-                    Memcached::OPT_TCP_NODELAY => true
+                    PHPMemcached::OPT_PREFIX_KEY => $id,
+                    PHPMemcached::OPT_DISTRIBUTION => PHPMemcached::DISTRIBUTION_CONSISTENT,
+                    PHPMemcached::OPT_LIBKETAMA_COMPATIBLE => true,
+                    PHPMemcached::OPT_NO_BLOCK => true,
+                    PHPMemcached::OPT_TCP_NODELAY => true
                 )
             );
-        } else if (!empty($servers)) {
-            throw new ExConnExists;
         }
         return $o_mc;
     }
