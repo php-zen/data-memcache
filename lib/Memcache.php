@@ -11,7 +11,7 @@ namespace Zen\Data\Memcache;
 
 use Zen\Core;
 
-use Memcached as PHPPHPMemcached;
+use Memcached as PHPMemcached;
 
 /**
  * Memcache 组件。
